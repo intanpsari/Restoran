@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static Restoran.Models.OrderModel;
 
 namespace Restoran.Controllers
 {
@@ -61,6 +62,21 @@ namespace Restoran.Controllers
         {
             OrderModel model = new OrderModel();
             PreparePublisher(model);
+
+            //model.DaftarMenu = context.tMenus.AsQueryable<tMenu>().Select(x =>
+            //new CheckBoxes
+            //{
+            //    Text = x.Nama,
+            //    Value = x.IdMenu
+            //});
+
+            model.DaftarMenu = new List<CheckBoxes>
+                {
+                    new CheckBoxes { Text = "Nasi", Value="MK001"},
+                    new CheckBoxes { Text = "Kentang", Value="MK002" },
+                    new CheckBoxes { Text = "Kangkung", Value="MK003" },
+                    new CheckBoxes { Text = "Es Teh Manis", Value="MN004" }
+                };
             return View(model);
         }
 
@@ -76,6 +92,7 @@ namespace Restoran.Controllers
                     MejaId = model.MejaId,
                     MenuId = model.MenuId
                 };
+                
                 context.tOrders.InsertOnSubmit(order);
                 context.SubmitChanges();
                 return RedirectToAction("Index");

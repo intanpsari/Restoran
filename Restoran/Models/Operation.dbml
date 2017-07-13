@@ -1,21 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_restoran" Class="OperationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-N1FKJCQ;Initial Catalog=db_restoran;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="db_restoranConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.tMenu" Member="tMenus">
-    <Type Name="tMenu">
-      <Column Name="IdMenu" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Nama" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Harga" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Stok" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="tMenu_tOrder" Member="tOrders" ThisKey="IdMenu" OtherKey="MenuId" Type="tOrder" />
-    </Type>
-  </Table>
   <Table Name="dbo.tOrder" Member="tOrders">
     <Type Name="tOrder">
       <Column Name="IdOrder" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MejaId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="MenuId" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="tMenu_tOrder" Member="tMenu" ThisKey="MenuId" OtherKey="IdMenu" Type="tMenu" IsForeignKey="true" DeleteRule="CASCADE" />
       <Association Name="tMeja_tOrder" Member="tMeja" ThisKey="MejaId" OtherKey="IdMeja" Type="tMeja" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="tMenu_tOrder" Member="tMenu" ThisKey="MenuId" OtherKey="IdMenu" Type="tMenu" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
   <Table Name="dbo.tMeja" Member="tMejas">
@@ -23,6 +14,16 @@
       <Column Name="IdMeja" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tMeja_tOrder" Member="tOrders" ThisKey="IdMeja" OtherKey="MejaId" Type="tOrder" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tMenu" Member="tMenus">
+    <Type Name="tMenu">
+      <Column Name="IdMenu" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nama" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Harga" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Stok" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Images" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="tMenu_tOrder" Member="tOrders" ThisKey="IdMenu" OtherKey="MenuId" Type="tOrder" />
     </Type>
   </Table>
 </Database>

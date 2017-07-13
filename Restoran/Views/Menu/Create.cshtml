@@ -1,0 +1,29 @@
+﻿@model Restoran.Models.MenuModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Menu", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+{
+
+    @Html.DisplayNameFor(model => Model.IdMenu)
+    <div>@Html.TextBoxFor(model => Model.IdMenu)</div>
+
+    @Html.DisplayNameFor(model => Model.Nama)
+    <div>@Html.TextBoxFor(model => Model.Nama)</div>
+
+    @Html.DisplayNameFor(model => Model.Harga)
+    <div>@Html.TextBoxFor(model => Model.Harga)</div>
+
+    @Html.DisplayNameFor(model => Model.Stok)
+    <div>@Html.TextBoxFor(model => Model.Stok)</div>
+
+    @Html.DisplayNameFor(model => Model.Images)
+    <div><input type="file" name="file" id="file" style="width: 100%;" /></div>
+    <div><br /><input type="submit" value="Submit" /></div>
+
+}
+
+

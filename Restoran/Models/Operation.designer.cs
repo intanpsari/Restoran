@@ -30,15 +30,15 @@ namespace Restoran.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InserttMenu(tMenu instance);
-    partial void UpdatetMenu(tMenu instance);
-    partial void DeletetMenu(tMenu instance);
     partial void InserttOrder(tOrder instance);
     partial void UpdatetOrder(tOrder instance);
     partial void DeletetOrder(tOrder instance);
     partial void InserttMeja(tMeja instance);
     partial void UpdatetMeja(tMeja instance);
     partial void DeletetMeja(tMeja instance);
+    partial void InserttMenu(tMenu instance);
+    partial void UpdatetMenu(tMenu instance);
+    partial void DeletetMenu(tMenu instance);
     #endregion
 		
 		public OperationDataContext() : 
@@ -71,14 +71,6 @@ namespace Restoran.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tMenu> tMenus
-		{
-			get
-			{
-				return this.GetTable<tMenu>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tOrder> tOrders
 		{
 			get
@@ -94,167 +86,13 @@ namespace Restoran.Models
 				return this.GetTable<tMeja>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tMenu")]
-	public partial class tMenu : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _IdMenu;
-		
-		private string _Nama;
-		
-		private System.Nullable<int> _Harga;
-		
-		private System.Nullable<int> _Stok;
-		
-		private EntitySet<tOrder> _tOrders;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdMenuChanging(string value);
-    partial void OnIdMenuChanged();
-    partial void OnNamaChanging(string value);
-    partial void OnNamaChanged();
-    partial void OnHargaChanging(System.Nullable<int> value);
-    partial void OnHargaChanged();
-    partial void OnStokChanging(System.Nullable<int> value);
-    partial void OnStokChanged();
-    #endregion
-		
-		public tMenu()
-		{
-			this._tOrders = new EntitySet<tOrder>(new Action<tOrder>(this.attach_tOrders), new Action<tOrder>(this.detach_tOrders));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMenu", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string IdMenu
+		public System.Data.Linq.Table<tMenu> tMenus
 		{
 			get
 			{
-				return this._IdMenu;
+				return this.GetTable<tMenu>();
 			}
-			set
-			{
-				if ((this._IdMenu != value))
-				{
-					this.OnIdMenuChanging(value);
-					this.SendPropertyChanging();
-					this._IdMenu = value;
-					this.SendPropertyChanged("IdMenu");
-					this.OnIdMenuChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nama", DbType="NVarChar(50)")]
-		public string Nama
-		{
-			get
-			{
-				return this._Nama;
-			}
-			set
-			{
-				if ((this._Nama != value))
-				{
-					this.OnNamaChanging(value);
-					this.SendPropertyChanging();
-					this._Nama = value;
-					this.SendPropertyChanged("Nama");
-					this.OnNamaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Harga", DbType="Int")]
-		public System.Nullable<int> Harga
-		{
-			get
-			{
-				return this._Harga;
-			}
-			set
-			{
-				if ((this._Harga != value))
-				{
-					this.OnHargaChanging(value);
-					this.SendPropertyChanging();
-					this._Harga = value;
-					this.SendPropertyChanged("Harga");
-					this.OnHargaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stok", DbType="Int")]
-		public System.Nullable<int> Stok
-		{
-			get
-			{
-				return this._Stok;
-			}
-			set
-			{
-				if ((this._Stok != value))
-				{
-					this.OnStokChanging(value);
-					this.SendPropertyChanging();
-					this._Stok = value;
-					this.SendPropertyChanged("Stok");
-					this.OnStokChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tMenu_tOrder", Storage="_tOrders", ThisKey="IdMenu", OtherKey="MenuId")]
-		public EntitySet<tOrder> tOrders
-		{
-			get
-			{
-				return this._tOrders;
-			}
-			set
-			{
-				this._tOrders.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tOrders(tOrder entity)
-		{
-			this.SendPropertyChanging();
-			entity.tMenu = this;
-		}
-		
-		private void detach_tOrders(tOrder entity)
-		{
-			this.SendPropertyChanging();
-			entity.tMenu = null;
 		}
 	}
 	
@@ -270,9 +108,9 @@ namespace Restoran.Models
 		
 		private string _MenuId;
 		
-		private EntityRef<tMenu> _tMenu;
-		
 		private EntityRef<tMeja> _tMeja;
+		
+		private EntityRef<tMenu> _tMenu;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -288,8 +126,8 @@ namespace Restoran.Models
 		
 		public tOrder()
 		{
-			this._tMenu = default(EntityRef<tMenu>);
 			this._tMeja = default(EntityRef<tMeja>);
+			this._tMenu = default(EntityRef<tMenu>);
 			OnCreated();
 		}
 		
@@ -361,40 +199,6 @@ namespace Restoran.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tMenu_tOrder", Storage="_tMenu", ThisKey="MenuId", OtherKey="IdMenu", IsForeignKey=true, DeleteRule="CASCADE")]
-		public tMenu tMenu
-		{
-			get
-			{
-				return this._tMenu.Entity;
-			}
-			set
-			{
-				tMenu previousValue = this._tMenu.Entity;
-				if (((previousValue != value) 
-							|| (this._tMenu.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tMenu.Entity = null;
-						previousValue.tOrders.Remove(this);
-					}
-					this._tMenu.Entity = value;
-					if ((value != null))
-					{
-						value.tOrders.Add(this);
-						this._MenuId = value.IdMenu;
-					}
-					else
-					{
-						this._MenuId = default(string);
-					}
-					this.SendPropertyChanged("tMenu");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tMeja_tOrder", Storage="_tMeja", ThisKey="MejaId", OtherKey="IdMeja", IsForeignKey=true, DeleteRule="CASCADE")]
 		public tMeja tMeja
 		{
@@ -425,6 +229,40 @@ namespace Restoran.Models
 						this._MejaId = default(string);
 					}
 					this.SendPropertyChanged("tMeja");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tMenu_tOrder", Storage="_tMenu", ThisKey="MenuId", OtherKey="IdMenu", IsForeignKey=true, DeleteRule="CASCADE")]
+		public tMenu tMenu
+		{
+			get
+			{
+				return this._tMenu.Entity;
+			}
+			set
+			{
+				tMenu previousValue = this._tMenu.Entity;
+				if (((previousValue != value) 
+							|| (this._tMenu.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tMenu.Entity = null;
+						previousValue.tOrders.Remove(this);
+					}
+					this._tMenu.Entity = value;
+					if ((value != null))
+					{
+						value.tOrders.Add(this);
+						this._MenuId = value.IdMenu;
+					}
+					else
+					{
+						this._MenuId = default(string);
+					}
+					this.SendPropertyChanged("tMenu");
 				}
 			}
 		}
@@ -561,6 +399,192 @@ namespace Restoran.Models
 		{
 			this.SendPropertyChanging();
 			entity.tMeja = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tMenu")]
+	public partial class tMenu : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _IdMenu;
+		
+		private string _Nama;
+		
+		private System.Nullable<int> _Harga;
+		
+		private System.Nullable<int> _Stok;
+		
+		private string _Images;
+		
+		private EntitySet<tOrder> _tOrders;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdMenuChanging(string value);
+    partial void OnIdMenuChanged();
+    partial void OnNamaChanging(string value);
+    partial void OnNamaChanged();
+    partial void OnHargaChanging(System.Nullable<int> value);
+    partial void OnHargaChanged();
+    partial void OnStokChanging(System.Nullable<int> value);
+    partial void OnStokChanged();
+    partial void OnImagesChanging(string value);
+    partial void OnImagesChanged();
+    #endregion
+		
+		public tMenu()
+		{
+			this._tOrders = new EntitySet<tOrder>(new Action<tOrder>(this.attach_tOrders), new Action<tOrder>(this.detach_tOrders));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdMenu", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string IdMenu
+		{
+			get
+			{
+				return this._IdMenu;
+			}
+			set
+			{
+				if ((this._IdMenu != value))
+				{
+					this.OnIdMenuChanging(value);
+					this.SendPropertyChanging();
+					this._IdMenu = value;
+					this.SendPropertyChanged("IdMenu");
+					this.OnIdMenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nama", DbType="NVarChar(50)")]
+		public string Nama
+		{
+			get
+			{
+				return this._Nama;
+			}
+			set
+			{
+				if ((this._Nama != value))
+				{
+					this.OnNamaChanging(value);
+					this.SendPropertyChanging();
+					this._Nama = value;
+					this.SendPropertyChanged("Nama");
+					this.OnNamaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Harga", DbType="Int")]
+		public System.Nullable<int> Harga
+		{
+			get
+			{
+				return this._Harga;
+			}
+			set
+			{
+				if ((this._Harga != value))
+				{
+					this.OnHargaChanging(value);
+					this.SendPropertyChanging();
+					this._Harga = value;
+					this.SendPropertyChanged("Harga");
+					this.OnHargaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Stok", DbType="Int")]
+		public System.Nullable<int> Stok
+		{
+			get
+			{
+				return this._Stok;
+			}
+			set
+			{
+				if ((this._Stok != value))
+				{
+					this.OnStokChanging(value);
+					this.SendPropertyChanging();
+					this._Stok = value;
+					this.SendPropertyChanged("Stok");
+					this.OnStokChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Images", DbType="NVarChar(50)")]
+		public string Images
+		{
+			get
+			{
+				return this._Images;
+			}
+			set
+			{
+				if ((this._Images != value))
+				{
+					this.OnImagesChanging(value);
+					this.SendPropertyChanging();
+					this._Images = value;
+					this.SendPropertyChanged("Images");
+					this.OnImagesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tMenu_tOrder", Storage="_tOrders", ThisKey="IdMenu", OtherKey="MenuId")]
+		public EntitySet<tOrder> tOrders
+		{
+			get
+			{
+				return this._tOrders;
+			}
+			set
+			{
+				this._tOrders.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tOrders(tOrder entity)
+		{
+			this.SendPropertyChanging();
+			entity.tMenu = this;
+		}
+		
+		private void detach_tOrders(tOrder entity)
+		{
+			this.SendPropertyChanging();
+			entity.tMenu = null;
 		}
 	}
 }

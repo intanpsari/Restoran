@@ -18,61 +18,60 @@ namespace Restoran.Controllers
         public ActionResult Index()
         {
             List<MenuModel> menuList = new List<MenuModel>();
-            List<MenuModel> mejaList = new List<MenuModel>();
-            List<MenuModel> cList = new List<MenuModel>();
-            var query = from menu in context.tMenus select menu;
-            var query2 = from meja in context.tMejas select meja;
-
-            var menus = query.ToList();
-            var mejas = query2.ToList();
-
-            foreach (var a in menus)
-            {
-                menuList.Add(new MenuModel()
-                {
-                    IdMenu = a.IdMenu,
-                    Nama = a.Nama,
-                    Harga = (int)a.Harga,
-                    Stok = (int)a.Stok
-                });
-            }
-            foreach (var a in mejas)
-            {
-                mejaList.Add(new MenuModel()
-                {
-                    IdMeja = a.IdMeja,
-                    Status = (int)a.Status
-                });
-            }
-            
-            cList = menuList.Concat(mejaList).ToList();
-            return View(cList);
+            var query = from menu in context.tMenus
+                        select new MenuModel
+                        {
+                            IdMenu = menu.IdMenu,
+                            Nama = menu.Nama,
+                            Harga = (int)menu.Harga,
+                            Stok = (int)menu.Stok,
+                            Images = menu.Images
+                        };
+            menuList = query.ToList();
+            return View(menuList);
         }
 
-        //private MenuModel PreparePublisher(MenuModel model)
-        //{
-        //    model.tMejas = context.tMejas.AsQueryable<tMeja>().Select(x =>
-        //    new SelectListItem()
-        //    {
-        //        Text = x.NoMeja.ToString(),
-        //        Value = x.IdMeja
-        //    });
-        //    return model;
-        //}
+        // GET: Order/Create
+        public ActionResult Create()
+        {
+            MenuModel model = new MenuModel();
+            
+            return View(model);
+        }
 
-        //public ActionResult Edit(string id)
-        //{
-        //    MenuModel model = context.tMejas.Where(some => some.IdMeja == id).Select(
-        //        some => new MenuModel()
-        //        {
-        //            IdMeja = some.IdMeja,
-        //            Status = (int)some.Status
+        // POST: Order/Create
+        [HttpPost]
+        public ActionResult Create(MenuModel model, HttpPostedFileBase file)
+        {
+            string gambar = "";
+            if (file != null)
+            {
+                
+                string ImageName = System.IO.Path.GetFileName(file.FileName);
+                string physicalPath = Server.MapPath("~/images/" + ImageName);
+                gambar = ImageName;
+            }
+            try
+            {
+                // TODO: Add insert logic here
+                tMenu menu = new tMenu()
+                {
+                    IdMenu = model.IdMenu,
+                    Nama = model.Nama,
+                    Harga = (int)model.Harga,
+                    Stok = (int)model.Stok,
+                    Images = gambar
+                };
 
-        //        }).SingleOrDefault();
-
-        //    PreparePublisher(model);
-        //    return View();
-        //}
+                context.tMenus.InsertOnSubmit(menu);
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
 
         public ActionResult Contact()
         {
