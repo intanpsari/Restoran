@@ -6,6 +6,7 @@
 <h2>Edit</h2>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model=> Model.IdOrder)
 
     @Html.DisplayNameFor(model => Model.MejaId)
     <div>@Html.DropDownListFor(model => Model.MejaId, Model.tMejas)</div>

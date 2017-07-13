@@ -118,7 +118,10 @@ namespace Restoran.Controllers
             }
             catch
             {
-                return View();
+                OrderModel modela = new OrderModel();
+
+                PreparePublisher(model);
+                return View(model);
             }
         }
 

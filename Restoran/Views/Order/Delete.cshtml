@@ -7,6 +7,7 @@
 <h2>Delete</h2>
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => Model.IdOrder)
     @Html.DisplayFor(model => Model.IdOrder)
     <br />
     @Html.DisplayFor(model => Model.MejaId)
