@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Restoran.Models.MenuModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+<p>Dropdownlist</p>
+@foreach (var nomeja in Model)
+{
+    if (nomeja.IdMeja != "0")
+    {
+        @Html.DisplayFor(modelItem => nomeja.IdMeja)
+        @*@Html.DropDownListFor(model => Model.NoMeja, Model.tMejas)*@
+    }
+}
+<br /><br />
+<p>CheckBox</p>
+<table class="table table-striped">
+    <tr>
+        <th>Id Menu</th>
+        <th>Nama</th>
+        <th>Harga</th>
+        <th>Stok</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.Harga != 0)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Harga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stok)
+            </td>
+
+        </tr>
+        }
+    }
+
+</table>

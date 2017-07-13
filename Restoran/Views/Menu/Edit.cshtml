@@ -1,0 +1,13 @@
+﻿@model Restoran.Models.MenuModel
+@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(model => Model.NoMeja)
+    <div>@Html.DropDownListFor(model => Model.NoMeja, Model.tMejas)</div>
+}

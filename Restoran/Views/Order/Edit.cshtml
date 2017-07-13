@@ -1,0 +1,19 @@
+﻿@model Restoran.Models.OrderModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+
+    @Html.DisplayNameFor(model => Model.MejaId)
+    <div>@Html.DropDownListFor(model => Model.MejaId, Model.tMejas)</div>
+
+    @Html.DisplayNameFor(model => Model.MenuId)
+    <div>@Html.DropDownListFor(model => Model.MenuId, Model.tMenus)</div>
+
+    <div><br /><input type="submit" value="Submit" /></div>
+
+
+}
