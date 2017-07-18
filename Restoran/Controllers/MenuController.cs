@@ -49,6 +49,7 @@ namespace Restoran.Controllers
                 
                 string ImageName = System.IO.Path.GetFileName(file.FileName);
                 string physicalPath = Server.MapPath("~/images/" + ImageName);
+                file.SaveAs(physicalPath);  
                 gambar = ImageName;
             }
             try
@@ -73,11 +74,24 @@ namespace Restoran.Controllers
             }
         }
 
-        public ActionResult Contact()
+        public ActionResult Data()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult IndexP()
+        {
+            List<MenuModel> pegawaiList = new List<MenuModel>();
+            var query = from pegawai in context.tusers
+                        select new MenuModel
+                        {
+                            username = pegawai.username,
+                            password = pegawai.password
+                        };
+            pegawaiList = query.ToList();
+            return View(pegawaiList);
         }
     }
 }

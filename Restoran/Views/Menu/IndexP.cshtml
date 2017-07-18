@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Restoran.Models.MenuModel>
+@{
+    ViewBag.Title = "IndexP";
+}
+
+<h2>IndexP</h2>
+
+@Html.ActionLink("Create New Employee", "Create", "Menu")
+<table class="table table-striped">
+    <tr>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.username })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.password })
+            </td>
+        </tr>
+    }
+</table>

@@ -12,8 +12,10 @@ namespace Restoran.Models
         public int IdOrder { get; set; }
         public string MejaId { get; set; }
         public string MenuId { get; set; }
-        
+        public int JumlahMenu { get; set; }
+
         public string Nama { get; set; }
+        public string Images { get; set; }
         public int Harga { get; set; }
         public int Stok { get; set; }
         

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Restoran.Models.PesanModel>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Pilih Meja</h2>
+@Html.DisplayNameFor(model => Model.IdMeja)
+<div>@Html.DropDownListFor(model => Model.IdMeja, Model.tMejas)</div>
+

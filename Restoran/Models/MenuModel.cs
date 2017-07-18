@@ -13,9 +13,12 @@ namespace Restoran.Models
         public int Harga { get; set; }
         public int Stok { get; set; }
         public string Images { get; set; }
-        
 
-        
+        public string username { get; set; }
+        public string password { get; set; }
+
+
+
     }
 
 }

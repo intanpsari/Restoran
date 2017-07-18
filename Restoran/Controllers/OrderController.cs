@@ -28,6 +28,8 @@ namespace Restoran.Controllers
                             IdOrder = order.IdOrder,
                             MejaId = order.MejaId,
                             MenuId = order.MenuId,
+                            Images = menu.Images,
+                            JumlahMenu = (int)order.JumlahMenu,
                             Nama = menu.Nama
                 };
             orderList = query.ToList();
@@ -90,7 +92,8 @@ namespace Restoran.Controllers
                 tOrder order = new tOrder()
                 {
                     MejaId = model.MejaId,
-                    MenuId = model.MenuId
+                    MenuId = model.MenuId,
+                    JumlahMenu = model.JumlahMenu
                 };
                 
                 context.tOrders.InsertOnSubmit(order);
@@ -111,7 +114,8 @@ namespace Restoran.Controllers
                {
                    IdOrder = some.IdOrder,
                    MejaId = some.MejaId,
-                   MenuId = some.MenuId
+                   MenuId = some.MenuId,
+                   JumlahMenu = (int)some.JumlahMenu
                }).SingleOrDefault();
 
             PreparePublisher(model);
@@ -129,6 +133,7 @@ namespace Restoran.Controllers
 
                 order.MejaId = model.MejaId;
                 order.MenuId = model.MenuId;
+                order.JumlahMenu = model.JumlahMenu;
                 
                 context.SubmitChanges();
                 return RedirectToAction("Index");

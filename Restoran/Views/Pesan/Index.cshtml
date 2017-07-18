@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Restoran.Models.PesanModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Please Order Here</h2>
+
+@Html.DisplayNameFor(model => Model.IdMeja)
+<div>@Html.DropDownListFor(model => Model.IdMeja, Model.tMejas)</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>Nama</th>
+        <th>Image</th>
+        <th>Jumlah</th>
+        <th>Order</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.HiddenFor(modelItem => item.IdMenu)
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                <img src="~/Images/@item.Images" width="100" />
+            </td>
+            <td>
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+            <td>
+                @Html.ActionLink("Pesan", "Pesan", "Pesan", new { id = item.IdMenu })
+            </td>
+        </tr>
+    }
+</table>

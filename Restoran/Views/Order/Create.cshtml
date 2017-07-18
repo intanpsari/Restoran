@@ -9,36 +9,21 @@
 
 @using (Html.BeginForm())
 {
-    
+
     @Html.DisplayNameFor(model => Model.MejaId)
     <div>@Html.DropDownListFor(model => Model.MejaId, Model.tMejas)</div>
+    <br />
 
-    @Html.DisplayNameFor(model => Model.MenuId)
-    <div>@Html.DropDownListFor(model => Model.MenuId, Model.tMenus)</div>
-
-    for (int i = 0; i < Model.DaftarMenu.Count; i++)
-    {
-        @Html.CheckBoxFor(model => Model.DaftarMenu[i].Checked, new { id = "employmentType_" + i })
-        @Html.HiddenFor(model => Model.DaftarMenu[i].Value)
-        @Html.DisplayFor(model => Model.DaftarMenu[i].Text)
-        @*@Html.DisplayFor(model => Model.DaftarMenu[i].Value)*@
-        <br />
-    }
-    <div><br /><input type="submit" value="Submit" /></div>
-    
-}
-
-@*@model IEnumerable<Restoran.Models.OrderModel>
-<table class="table table-striped">
-    <tr>
-        <th>Nama Menu</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+    <table class="table table-striped">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nama)
-            </td>
+            <th>Menu</th>
+            <th>Jumlah</th>
+            <th>Tmbah</th>
         </tr>
-    }
-</table>*@
+        <tr>
+            <td>@Html.DropDownListFor(model => Model.MenuId, Model.tMenus)</td>
+            <td>@Html.TextBoxFor(model => Model.JumlahMenu)</td>
+            <td><input type="submit" value="+" /></td>
+        </tr>
+    </table>
+}
