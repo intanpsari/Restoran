@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Restoran.Models.KasirModel>
+@{
+    ViewBag.Title = "Detail";
+
+    int jmlh = 0;
+    foreach(var a in Model)
+    {
+        jmlh = jmlh + a.Total;
+    }
+
+    ViewBag.s = jmlh;
+}
+
+<h2>Detail</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Nama</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Total</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Harga)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Jumlah)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            
+        </tr>
+    }
+</table>
+<h3>Total Bayar: @ViewBag.s</h3>

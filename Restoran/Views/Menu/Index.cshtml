@@ -18,7 +18,7 @@
         <th>Stok</th>
         <th>Images</th>
         <th>Edit</th>
-        <th>Delete</th>
+        @*<th>Delete</th>*@
     </tr>
     @foreach (var item in Model)
     {
@@ -37,14 +37,13 @@
             </td>
             <td>
                 <img src="~/Images/@item.Images" width="100" />
-                @Html.DisplayFor(modelItem => item.Images)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.IdMenu })
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Delete", "Delete", new { id = item.IdMenu })
-            </td>
+            </td>*@
         </tr>
     }
 </table>

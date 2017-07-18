@@ -98,7 +98,7 @@ namespace Restoran.Controllers
                 
                 context.tOrders.InsertOnSubmit(order);
                 context.SubmitChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
             catch
             {

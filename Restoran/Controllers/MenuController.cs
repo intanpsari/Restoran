@@ -74,6 +74,83 @@ namespace Restoran.Controllers
             }
         }
 
+        public ActionResult Edit(string id)
+        {
+            MenuModel model = context.tMenus.Where(some => some.IdMenu == id).Select(
+               some => new MenuModel()
+               {
+                   IdMenu = some.IdMenu,
+                   Nama = some.Nama,
+                   Harga = (int)some.Harga,
+                   Stok = (int)some.Stok,
+                   Images = some.Images
+               }).SingleOrDefault();
+            
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(MenuModel model)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                tMenu menu = context.tMenus.Where(some => some.IdMenu == model.IdMenu).SingleOrDefault();
+
+                menu.IdMenu = model.IdMenu;
+                menu.Nama = model.Nama;
+                menu.Harga = model.Harga;
+                menu.Stok = model.Stok;
+                menu.Images = model.Images;
+
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                OrderModel modela = new OrderModel();
+               
+                return View(modela);
+            }
+        }
+
+        public ActionResult Delete(string id)
+        {
+            MenuModel model = context.tMenus.Where(some => some.IdMenu == id).Select(
+                some => new MenuModel()
+                {
+                    IdMenu = some.IdMenu,
+                    Nama = some.Nama,
+                    Harga = (int)some.Harga,
+                    Stok = (int)some.Stok,
+                    Images = some.Images
+                }).SingleOrDefault();
+
+            return View(model);
+        }
+
+        // POST: Order/Delete/5
+        [HttpPost]
+        public ActionResult Delete(MenuModel model)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                
+                tMenu menu = context.tMenus.Where(some => some.IdMenu == model.IdMenu).SingleOrDefault();
+                context.tMenus.DeleteOnSubmit(menu);
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+
+
         public ActionResult Data()
         {
             ViewBag.Message = "Your contact page.";
@@ -92,6 +169,40 @@ namespace Restoran.Controllers
                         };
             pegawaiList = query.ToList();
             return View(pegawaiList);
+        }
+
+        public ActionResult EditP(string id)
+        {
+            MenuModel model = context.tusers.Where(some => some.username == id).Select(
+               some => new MenuModel()
+               {
+                   username = some.username,
+                   password = some.password
+               }).SingleOrDefault();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditP(MenuModel model)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                tuser user = context.tusers.Where(some => some.username == model.username).SingleOrDefault();
+
+                user.username = model.username;
+                user.password = model.password;
+
+                context.SubmitChanges();
+                return RedirectToAction("IndexP");
+            }
+            catch
+            {
+                OrderModel modela = new OrderModel();
+
+                return View(modela);
+            }
         }
     }
 }

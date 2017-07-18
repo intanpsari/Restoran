@@ -1,0 +1,18 @@
+﻿@model Restoran.Models.MenuModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.DisplayNameFor(model => Model.username)
+    <div>@Html.TextBoxFor(model => Model.username)</div>
+
+    @Html.DisplayNameFor(model => Model.password)
+    <div>@Html.TextBoxFor(model => Model.password)</div>
+
+    <div><br /><input type="submit" value="Submit" /></div>
+
+
+}

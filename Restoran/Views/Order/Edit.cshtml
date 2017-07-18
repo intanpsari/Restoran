@@ -3,18 +3,21 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit Order</h2>
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model=> Model.IdOrder)
 
-    @Html.DisplayNameFor(model => Model.MejaId)
+    @*@Html.DisplayNameFor(model => Model.MejaId)*@
+    <div>Meja</div>
     <div>@Html.DropDownListFor(model => Model.MejaId, Model.tMejas)</div>
 
-    @Html.DisplayNameFor(model => Model.MenuId)
+    @*@Html.DisplayNameFor(model => Model.MenuId)*@
+    <div>Menu</div>
     <div>@Html.DropDownListFor(model => Model.MenuId, Model.tMenus)</div>
 
-    @Html.DisplayNameFor(model => Model.JumlahMenu)
+    @*@Html.DisplayNameFor(model => Model.JumlahMenu)*@
+    <div>Jumlah</div>
     <div>@Html.TextBoxFor(model => Model.JumlahMenu)</div>
 
     <div><br /><input type="submit" value="Submit" /></div>

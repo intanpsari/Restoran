@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Restoran.Models.QorderModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pilih Meja</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Meja</th>
+        <th>Book</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMeja)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "PesanMenu", new { id = item.IdMeja })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,13 +1,26 @@
 ﻿@model Restoran.Models.MenuModel
 @{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Edit";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<h2>Edit</h2>
 @using (Html.BeginForm())
 {
-    @Html.DisplayNameFor(model => Model.NoMeja)
-    <div>@Html.DropDownListFor(model => Model.NoMeja, Model.tMejas)</div>
+    @Html.HiddenFor(model => Model.IdMenu)
+
+    @Html.DisplayNameFor(model => Model.Nama)
+    <div>@Html.TextBoxFor(model => Model.Nama)</div>
+    
+    @Html.DisplayNameFor(model => Model.Harga)
+    <div>@Html.TextBoxFor(model => Model.Harga)</div>
+
+    @Html.DisplayNameFor(model => Model.Stok)
+    <div>@Html.TextBoxFor(model => Model.Stok)</div>
+
+    @Html.DisplayNameFor(model => Model.Images)
+    <div>@Html.TextBoxFor(model => Model.Images)</div>
+
+    <div><br /><input type="submit" value="Submit" /></div>
+
+
 }

@@ -25,12 +25,12 @@ namespace Restoran.Models
         //Buat dropdown
         public IEnumerable<SelectListItem> tMejas { get; set; }
         public IEnumerable<SelectListItem> tMenus { get; set; }
-
+        
         public OrderModel()
         {
             tMejas = new List<SelectListItem>();
             tMenus = new List<SelectListItem>();
-
+            
         }
 
         //buat checkbox

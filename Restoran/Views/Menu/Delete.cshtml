@@ -1,0 +1,20 @@
+﻿@model Restoran.Models.MenuModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@using (Html.BeginForm())
+{
+    @Html.DisplayFor(model => Model.IdMenu)
+    <br />
+    @Html.DisplayFor(model => Model.Nama)
+    <br />
+    @Html.DisplayFor(model => Model.Harga)
+    <br />
+    @Html.DisplayFor(model => Model.Stok)
+    <br />
+    @Html.DisplayFor(model => Model.Images)
+    <input type="submit" value="Delete" />
+}

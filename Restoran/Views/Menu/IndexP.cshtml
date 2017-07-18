@@ -3,7 +3,7 @@
     ViewBag.Title = "IndexP";
 }
 
-<h2>IndexP</h2>
+<h2>Data Employee</h2>
 
 @Html.ActionLink("Create New Employee", "Create", "Menu")
 <table class="table table-striped">
@@ -11,7 +11,7 @@
         <th>Username</th>
         <th>Password</th>
         <th>Edit</th>
-        <th>Delete</th>
+        @*<th>Delete</th>*@
     </tr>
     @foreach (var item in Model)
     {
@@ -23,11 +23,11 @@
                 @Html.DisplayFor(modelItem => item.password)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.username })
+                @Html.ActionLink("Edit", "EditP", new { id = item.username })
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Delete", "Delete", new { id = item.password })
-            </td>
+            </td>*@
         </tr>
     }
 </table>
