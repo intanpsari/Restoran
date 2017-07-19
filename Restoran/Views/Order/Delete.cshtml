@@ -8,11 +8,12 @@
 Anda yakin akan menghapus?
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => Model.IdOrder)
     @Html.DisplayFor(model => Model.IdOrder)
     <br />
     @Html.DisplayFor(model => Model.MejaId)
     <br />
     @Html.DisplayFor(model => Model.MenuId)
     <br />
-    <input type="submit" value="Delete" />
+    <button type="submit" class="btn btn-primary">Submit</button>
 }

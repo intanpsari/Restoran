@@ -1,19 +1,21 @@
 ﻿@model Restoran.Models.MenuModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "CreateP";
 }
 
-<h2>Edit</h2>
+<h2>Create</h2>
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => Model.username)
+
     @Html.DisplayNameFor(model => Model.username)
     <div>@Html.TextBoxFor(model => Model.username)</div>
 
     @Html.DisplayNameFor(model => Model.password)
     <div>@Html.TextBoxFor(model => Model.password)</div>
 
+   
     <div><br /><button type="submit" class="btn btn-primary">Submit</button></div>
 
-
 }
+
+

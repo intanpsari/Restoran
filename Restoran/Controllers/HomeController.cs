@@ -28,7 +28,7 @@ namespace Restoran.Controllers
             }
             else if (model.username=="admin" && model.password=="admin")
             {
-                return RedirectToAction("Data", "Menu");
+                return RedirectToAction("Index", "Menu");
             }
             else
             {

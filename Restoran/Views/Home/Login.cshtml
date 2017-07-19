@@ -3,23 +3,33 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+
 
 @using (Html.BeginForm())
 {
-    <table>
-        <tr>
-            <td>Username</td>
-            <td>@Html.TextBoxFor(model => Model.username)</td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td>@Html.TextBoxFor(model => Model.password)</td>
-           
-        </tr>
-        <tr>
-            <td><input type="submit" value="Login" /></td>
-        </tr>
-    </table>
+    <center>
+        <div style="background-color:aliceblue; margin-left:20px;margin-right:20px;">
+            <br />
+            <h2>Login</h2>
+            <table>
+
+
+                <tr>
+                    <td>Username</td>
+                    <td>@Html.TextBoxFor(model => Model.username)</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>@Html.PasswordFor(model => Model.password)</td>
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                </tr>
+
+
+            </table>
+            <br /><br />
+        </div>
+    </center>
 }
 

@@ -204,5 +204,35 @@ namespace Restoran.Controllers
                 return View(modela);
             }
         }
+
+        public ActionResult CreateP()
+        {
+            MenuModel model = new MenuModel();
+
+            return View(model);
+        }
+
+        // POST: Order/Create
+        [HttpPost]
+        public ActionResult CreateP(MenuModel model)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                tuser user = new tuser()
+                {
+                    username = model.username,
+                    password = model.password
+                };
+
+                context.tusers.InsertOnSubmit(user);
+                context.SubmitChanges();
+                return RedirectToAction("IndexP");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
     }
 }

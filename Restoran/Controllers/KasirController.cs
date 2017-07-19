@@ -19,6 +19,8 @@ namespace Restoran.Controllers
         public ActionResult Index()
         {
             List<KasirModel> mejaList = new List<KasirModel>();
+            List<String> meja2List = new List<String>();
+            List<KasirModel> meja3List = new List<KasirModel>();
             var query = from order in context.tOrders
                         join menu in context.tMenus
                         on order.MenuId equals menu.IdMenu
@@ -34,9 +36,17 @@ namespace Restoran.Controllers
 
             //var bebas = mejaList.Distinct();
            mejaList = query.Distinct().ToList();
+            foreach(var a in mejaList)
+            {
+                if (!meja2List.Contains(a.IdMeja))
+                {
+                    meja3List.Add(a);
+                    meja2List.Add(a.IdMeja);
+                }
+            }
             //if (query != null) query = query.Distinct(x => x.IdMeja).ToList();
             //return View(bebas);
-            return View(mejaList);
+            return View(meja3List);
         }
 
         public ActionResult Detail(string id)

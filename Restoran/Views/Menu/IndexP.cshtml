@@ -5,7 +5,7 @@
 
 <h2>Data Employee</h2>
 
-@Html.ActionLink("Create New Employee", "Create", "Menu")
+@Html.ActionLink("Create New Employee", "CreateP", "Menu")
 <table class="table table-striped">
     <tr>
         <th>Username</th>
@@ -26,7 +26,7 @@
                 @Html.ActionLink("Edit", "EditP", new { id = item.username })
             </td>
             @*<td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.password })
+                @Html.ActionLink("Delete", "DeleteP", new { id = item.password })
             </td>*@
         </tr>
     }

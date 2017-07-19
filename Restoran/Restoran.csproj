@@ -171,6 +171,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\bg.jpg" />
     <Content Include="Images\makers.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -226,6 +227,7 @@
     <Content Include="Views\Qorder\PesanMenu.cshtml" />
     <Content Include="Views\Menu\Delete.cshtml" />
     <Content Include="Views\Menu\EditP.cshtml" />
+    <Content Include="Views\Menu\CreateP.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

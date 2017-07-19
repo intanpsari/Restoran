@@ -6,9 +6,32 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @helper Confirm()
+    {
+        if ((string)ViewContext.RouteData.Values["controller"] == "Menu" && (string)ViewContext.RouteData.Values["action"] == "Index" || (string)ViewContext.RouteData.Values["action"] == "IndexP")
+        {
+                <text>visible</text>
+        }
+        else
+        {
+                <text>hidden</text>
+        }
+    }
+
+    @helper cUser()
+    {
+        if ((string)ViewContext.RouteData.Values["controller"] == "Order" && (string)ViewContext.RouteData.Values["action"] == "Index" || (string)ViewContext.RouteData.Values["controller"] == "Kasir" && (string)ViewContext.RouteData.Values["action"] == "Index")
+        {
+                <text>visible</text>
+        }
+        else
+        {
+                <text>hidden</text>
+        }
+    }
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-light navbar-fixed-top" style="background-color: #b3ffb3; color:#009900;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -21,8 +44,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Login", "Login", "Home")</li>*@
-                    <li>@Html.ActionLink("Order", "Index", "Order")</li>
-                    <li>@Html.ActionLink("Cashier", "Index", "Kasir")</li>
+                    <li style="visibility: @cUser()">@Html.ActionLink("Order", "Index", "Order")</li>
+                    <li style="visibility: @cUser()"> @Html.ActionLink("Cashier", "Index", "Kasir")</li>
+                    <li style="visibility: @Confirm()"> @Html.ActionLink("Daftar Menu", "Index")</li>
+                    <li style="visibility: @Confirm()"> @Html.ActionLink("Daftar Pegawai", "IndexP")</li>
                 </ul>
             </div>
         </div>
@@ -31,7 +56,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Restoran</p>
         </footer>
     </div>
 
